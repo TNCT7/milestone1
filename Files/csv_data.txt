@@ -1,0 +1,4 @@
+name,age,university,degree
+Tejas,27,acpce,computer science
+David,26,armeit,Information technology
+Anna,22,cambridge,Medical
