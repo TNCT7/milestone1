@@ -1,0 +1,14 @@
+03-06-2022 14-51-55 INFO     [Logging.py:12]:Informative data
+03-06-2022 14-51-55 DEBUG    [Logging.py:13]:This is a debug messages
+03-06-2022 14-51-55 ERROR    [Logging.py:14]:Error has occured
+03-06-2022 14-51-55 WARNING  [Logging.py:15]:Warning!!
+03-06-2022 14-53-44 ERROR    [Logging.py:14]:Error has occured
+03-06-2022 14-53-44 WARNING  [Logging.py:15]:Warning!!
+03-06-2022 14-54-21 INFO     [Logging.py:12]:Informative data
+03-06-2022 14-54-21 DEBUG    [Logging.py:13]:This is a debug messages
+03-06-2022 14-54-21 ERROR    [Logging.py:14]:Error has occured
+03-06-2022 14-54-21 WARNING  [Logging.py:15]:Warning!!
+04-06-2022 18-28-37 INFO     [Logging.py:13]:Informative data
+04-06-2022 18-28-37 DEBUG    [Logging.py:14]:This is a debug messages
+04-06-2022 18-28-37 ERROR    [Logging.py:15]:Error has occured
+04-06-2022 18-28-37 WARNING  [Logging.py:16]:Warning!!
