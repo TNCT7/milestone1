@@ -1,63 +1,46 @@
 import sqlite3
+from database_connection import database_conn
 Books = 'books.txt'
 
 
 def create_book_table():
-    connection = sqlite3.connect('data.db')
-    cursor = connection.cursor()
+    # connection = sqlite3.connect('data.db')
+    # cursor = connection.cursor()
 
-    cursor.execute('CREATE TABLE IF NOT EXISTS BOOKS(name text primary key,author text,read integer)')
-    connection.commit()
-    connection.close()
+    with database_conn('data.db') as connection:
+        cursor = connection.cursor()
+        cursor.execute('CREATE TABLE IF NOT EXISTS BOOKS(name text primary key,author text,read integer)')
+
+
+
+    # connection.commit()
+    # connection.close()
 
 def Add(name,author):
-    connection = sqlite3.connect('data.db')
-    cursor = connection.cursor()
-
-    cursor.execute("INSERT INTO BOOKS VALUES(?,?,0)",(name,author))
-    connection.commit()
-    connection.close()
+    with database_conn('data.db') as connection:
+        cursor = connection.cursor()
+        cursor.execute("INSERT INTO BOOKS VALUES(?,?,0)",(name,author))
 
 
 def List():
-    connection = sqlite3.connect('data.db')
-    cursor = connection.cursor()
-
-    cursor.execute("SELECT * FROM BOOKS")
-    connection.commit()
-    connection.close()
-
+    with database_conn('data.db') as connection:
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM BOOKS")
+        book = [{"name":row[0],"author":row[1],"read":row[2]} for row in cursor.fetchall()]
+    return book
 
 def Read(bread):
-    getbooks = List()
-    #Trainers solution
-    # for book in getbooks:
-    #     if bread == book['name']:
-    #         book['read'] = '1'
-    # _save_all_books(getbooks)
 
-    #My solution
-    for book in getbooks:
-        if bread == book['name']:
-            book['read'] = '1'
-            _save_all_books(getbooks)
-        else:
-            _save_all_books(getbooks)
+    with database_conn('data.db') as connection:
+        cursor = connection.cursor()
+        cursor.execute("UPDATE BOOKS SET read=1 WHERE name=?",(bread,))
 
 
-def _save_all_books(getbooks):
-    with open(Books,'w') as File:
-        for book in getbooks:
-            File.write(f"{book['name']},{book['author']},{book['read']}\n")
+
 
 
 
 def delete(dbook):
-    getbooks = List()
-    with open(Books, 'w') as File1:
-        pass
-    for book in getbooks:
-        if dbook != book['name']:
-            with open(Books, 'a') as File:
-                File.write(f"{book['name']},{book['author']},{book['read']}\n")
-
+    with database_conn('data.db') as connection:
+        cursor = connection.cursor()
+        cursor.execute("DELETE FROM BOOKS WHERE name=?", (dbook,))

@@ -1,3 +1,1 @@
-Amruta,ssd,0
-Tejas,sdgs,0
-Tejas,Deepak,kgk,0
+Amruta,ssd,1

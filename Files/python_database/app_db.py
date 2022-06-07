@@ -40,7 +40,17 @@ while user_choice != 'q':
 
     elif user_choice == 'l':
 
-        print(database_db.List())
+        book = database_db.List()
+
+        for b in book:
+            # print(f'name is {b["name"]} author is {b["author"]} and read is {b["read"]}')
+            if b["read"] == 0:
+                b["read"] = "No"
+                print(f'name is {b["name"]} author is {b["author"]} and read is {b["read"]}')
+            else:
+                b["read"] = "Yes"
+                print(f'name is {b["name"]} author is {b["author"]} and read is {b["read"]}')
+
 
         user_choice = input("""
         Enter
@@ -56,7 +66,7 @@ while user_choice != 'q':
         book_read = input("Enter book name : ")
 
 
-        database_json.Read(book_read)
+        database_db.Read(book_read)
 
         user_choice = input("""
         Enter
@@ -72,7 +82,7 @@ while user_choice != 'q':
         book_del = input("Enter book name to be deleted : ")
 
 
-        database_json.delete(book_del)
+        database_db.delete(book_del)
 
         user_choice = input("""
         Enter
